@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestProject.Application.Commands.User.Response
+﻿namespace TestProject.Application.Commands.User.Response
 {
     public class DeleteUserCommandResponse
     {
+        public bool IsSuccess { get; set; }
     }
 }
