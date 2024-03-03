@@ -21,7 +21,8 @@ namespace TestProject.Application.Handlers.User
         {
             var user = new Domain.Entities.User() { Id = Guid.NewGuid(), Name = request.Name };
             await userRepository.AddAsync(user);
-            await elastichSearchRepository.InsertOrUpdateDocument("User_" + user.Id, user);
+            await userRepository.SaveChangesAsync();
+            await elastichSearchRepository.InsertOrUpdateDocument("test_project_data", user);
             return new CreateUserCommandResponse() { Id = user.Id };
         }
     }

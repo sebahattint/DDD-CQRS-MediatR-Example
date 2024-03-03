@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TestProject.Application.Commands.User.Request;
+using TestProject.Application.Commands.User.Response;
 
 namespace TestProject.Presentation.Controllers
 {
@@ -16,9 +17,10 @@ namespace TestProject.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateUserCommandRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateUserCommandRequest request)
         {
-            return Ok(mediator.Send(request));
+            CreateUserCommandResponse response = await mediator.Send(request);
+            return Ok(response);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestProject.Domain.Entities
 {
+    [Serializable]
     public class User
     {
         public Guid Id { get; set; }

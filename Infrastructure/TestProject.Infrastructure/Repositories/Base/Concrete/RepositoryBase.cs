@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TestProject.Infrastructure.Context;
 using TestProject.Infrastructure.Repositories.Base.Interfaces;
 
 namespace TestProject.Infrastructure.Repositories.Base.Concrete
@@ -12,12 +13,12 @@ namespace TestProject.Infrastructure.Repositories.Base.Concrete
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
         #region Properties
-        protected DbContext BaseContext { get; private set; }
+        protected TestProjectDbContext BaseContext { get; private set; }
         protected DbSet<TEntity> DbSet { get; private set; }
         #endregion
 
         #region Constructors
-        protected RepositoryBase(DbContext context)
+        protected RepositoryBase(TestProjectDbContext context)
         {
             BaseContext = context;
             DbSet = context.Set<TEntity>();

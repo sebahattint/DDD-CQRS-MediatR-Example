@@ -52,7 +52,7 @@ namespace TestProject.Infrastructure.Repositories.Base.Concrete
         public async Task InsertOrUpdateDocument(string indexName, TEntity entity)
         {
             var response = await _client.CreateAsync(entity, q => q.Index(indexName));
-            if (response.ApiCall?.HttpStatusCode == 409)
+            if (response.ApiCall?.HttpStatusCode == 409) 
             {
                 await _client.UpdateAsync<TEntity>(entity, a => a.Index(indexName).Doc(entity));
             }
